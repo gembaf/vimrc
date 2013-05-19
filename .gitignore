@@ -1,2 +1,3 @@
-_tmp/*
-bundle/*
+_tmp/
+bundle/
+!readme.txt
