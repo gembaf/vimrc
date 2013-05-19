@@ -1,3 +1,4 @@
 _tmp/*
 !_tmp/readme.txt
 bundle/
+!bundle/readme.txt
