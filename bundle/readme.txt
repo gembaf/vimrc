@@ -1,1 +1,1 @@
-plugin data
+plugin
