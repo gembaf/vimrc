@@ -87,8 +87,8 @@ if has('unix') && !has('gui_running')
   vnoremap <silent> <ESC> <ESC>
 endif
 
-"~/.vim/bundle/vim-powerline/autoload/Powerline/Colorschemes/mycolor.vimを読み取る
-let g:Powerline_colorscheme='mycolor'
+"~/.vim/bundle/vim-powerline/autoload/Powerline/Colorschemes/color_powerline.vimを読み取る
+let g:Powerline_colorscheme='color_powerline'
 
 "===========================================================
 " Vim-quickrun
