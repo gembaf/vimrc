@@ -29,8 +29,8 @@ hi NonText ctermfg=cyan ctermbg=NONE guifg=cyan guibg=NONE
 hi SpecialKey ctermfg=darkblue ctermbg=NONE guifg=blue guibg=NONE
 
 "補完時のメニュー
-hi Pmenu ctermbg=darkblue ctermfg=white
-hi PmenuSel ctermbg=darkred ctermfg=white
+hi Pmenu ctermfg=white ctermbg=darkblue guifg=white guibg=blue
+hi PmenuSel ctermfg=white ctermbg=darkred guifg=white guibg=red
 
 "マクロなど
 hi PreProc ctermfg=cyan ctermbg=NONE guifg=cyan guibg=NONE
