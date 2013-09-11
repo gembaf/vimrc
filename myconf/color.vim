@@ -22,7 +22,7 @@ hi Boolean ctermfg=magenta ctermbg=NONE guifg=magenta guibg=NONE
 
 "テキスト以外
 "eol, extends, precedes を含む
-hi NonText ctermfg=cyan ctermbg=NONE guifg=cyan guibg=NONE
+hi NonText ctermfg=lightblue ctermbg=NONE guifg=lightblue guibg=NONE
 
 "スペシャルキー
 "nbsp, tab, trail を含む

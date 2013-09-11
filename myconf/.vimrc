@@ -211,19 +211,19 @@ nnoremap <silent><Leader>rg :<C-u>source $MYGVIMRC<CR> :echo "Finish Loading .vi
 " keybind
 "=====================================================================
 
-"Ctrl+pでノーマルモードへ
-"inoremap <C-p> <ESC>
-
 "jjでノーマルモードへ
 inoremap jj <Esc>
 vnoremap <C-j><C-j> <Esc>
 
-"インサートモード時に移動
-"これは甘え
-"inoremap <C-j> <Down>
-"inoremap <C-k> <Up>
-"inoremap <C-h> <Left>
-"inoremap <C-l> <Right>
+" カーソルキーからABCDが出現する謎現象を解消
+inoremap OA <Up>
+inoremap OB <Down>
+inoremap OC <Right>
+inoremap OD <Left>
+vnoremap OA <Up>
+vnoremap OB <Down>
+vnoremap OC <Right>
+vnoremap OD <Left>
 
 "1文字のみの移動はこれで
 inoremap <C-f><C-h> <Left>
@@ -256,9 +256,6 @@ inoremap <> <><Left>
 inoremap {% {%<Space><Space>%}<Left><Left><Left>
 inoremap [] []<Left>
 
-"ノーマルモード時にwで保存
-"nnoremap w :<C-u>w<Return>
-
 " 検索時のハイライトを解除
 nnoremap <silent><C-l> :nohlsearch<CR>
 
@@ -277,7 +274,7 @@ set showmatch
 set list
 
 "listで表示される文字のフォーマットを指定する
-set listchars=eol:\\,tab:>-,trail:_
+set listchars=eol:$,tab:>-,trail:_
 
 "ステータスラインを常に表示
 set laststatus=2

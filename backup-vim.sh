@@ -12,4 +12,5 @@ cp -u ~/.vim/dict/* ~/.vim/myconf/
 # 戦闘力の表示
 echo "戦闘力"
 wc -l ~/.vimrc
+wc -l ~/.gvimrc
 
