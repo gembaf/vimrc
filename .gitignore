@@ -7,3 +7,9 @@ _tmp/*
 # ただしbundle/ 自体は残す
 bundle/*
 !bundle/readme.txt
+
+# よくわからんファイルを無視
+/.netrwhist
+
+
+
