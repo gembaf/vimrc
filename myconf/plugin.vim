@@ -36,8 +36,8 @@ NeoBundle 'mattn/zencoding-vim.git'
 NeoBundle 'vim-jp/vimdoc-ja.git'
 NeoBundle 'Shougo/neobundle.vim.git'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
       \   'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
@@ -205,7 +205,8 @@ let g:neocomplcache_enable_fuzzy_completion = 0
 let g:neocomplcache_temporary_dir = expand('~/.neocom')
 
 "neocomplcacheが使用するsnippetsのディレクトリ
-let g:neocomplcache_snippets_dir = expand('~/.vim/snippets')
+"let g:neocomplcache_snippets_dir = expand('~/.vim/snippets')
+let g:neosnippet#snippets_directory = expand('~/.vim/snippets')
 
 "オムニ補完をRuby対応にする
 let g:neocomplcache_omni_functions = {
