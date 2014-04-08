@@ -111,15 +111,15 @@ let g:quickrun_config = {
 call watchdogs#setup(g:quickrun_config)
 
 "保存したときにシンタックスチェック
-let g:watchdogs_check_BufWritePost_enable = 1
+let g:watchdogs_check_BufWritePost_enable = 0
 
 "filetypeごとに有効無効を設定
 let g:watchdogs_check_BufWritePost_enables = {
-      \ "c" : 1
+      \ "c" : 0
       \ }
 
 "一定時間キー入力がなかったときにシンタックスチェック
-let g:watchdogs_check_CursorHold_enable = 1
+let g:watchdogs_check_CursorHold_enable = 0
 
 "===========================================================
 " Vim-hier
