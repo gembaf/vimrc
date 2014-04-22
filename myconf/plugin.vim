@@ -36,6 +36,7 @@ NeoBundle 'mattn/zencoding-vim.git'
 NeoBundle 'vim-jp/vimdoc-ja.git'
 NeoBundle 'Shougo/neobundle.vim.git'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimproc.git', {
