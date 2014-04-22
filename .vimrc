@@ -84,8 +84,14 @@ endif
 " :next :previous などのコマンドを実行する度に保存
 set autowrite
 
-"<C-p>でpaste-modeとの切り替え
+" <C-p>でpaste-modeとの切り替え
 nnoremap <silent><C-p> :set paste!<CR>
+
+function! Today()
+  execute ":normal i" . strftime("%Y.%m.%d(%a)")
+endfunction
+command! Today call Today()
+
 
 "===========================================================
 " 言語別の設定
