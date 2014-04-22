@@ -26,6 +26,7 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
+NeoBundle 'slim-template/vim-slim.git'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'jceb/vim-hier'
