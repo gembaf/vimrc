@@ -1,5 +1,5 @@
 "=====================================================================
-" 初期設定
+"  初期設定
 "=====================================================================
 
 " 絶対最初に書く!!!
@@ -30,13 +30,13 @@ if has('kaoriya')
 endif
 
 "=====================================================================
-" plugin
+"  plugin
 "=====================================================================
 source ~/.vim/myconf/plugin.vim
 " pandoc   :markdown
 
 "======================================================================
-" 基本的な設定
+"  基本的な設定
 "======================================================================
 
 " autocmd!をMyAutoCmdに追加
@@ -84,18 +84,23 @@ endif
 " :next :previous などのコマンドを実行する度に保存
 set autowrite
 
-"<C-p>でpaste-modeとの切り替え
+" <C-p>でpaste-modeとの切り替え
 nnoremap <silent><C-p> :set paste!<CR>
 
-"===========================================================
-" 言語別の設定
-"===========================================================
+function! Today()
+  execute ":normal o" . strftime("%Y.%m.%d(%a)")
+endfunction
+command! Today call Today()
+
+"======================================================================
+"  言語別の設定
+"======================================================================
 
 " C言語: ~/.vim/indent/c.vim
 
-"===========================================================
-" indent, tab
-"===========================================================
+"======================================================================
+"  indent, tab
+"======================================================================
 
 " タブの代わりに空白文字を挿入する
 set expandtab
@@ -107,7 +112,7 @@ function! SetTabWidth(width)
   let &softtabstop = a:width
 endfunction
 call SetTabWidth(2)
-command! -nargs=1 SetTabWidth call SetTabWidth(<args>)
+command! -nargs=1 Setw call SetTabWidth(<args>)
 
 " 自動インデント
 set autoindent
@@ -118,9 +123,9 @@ set smartindent
 " スマートタブ
 set smarttab
 
-"===========================================================
-" swap, backup file
-"===========================================================
+"======================================================================
+"  swap, backup file
+"======================================================================
 
 if !s:is_windows  " Linuxのとき
   " スワップファイルを作る
@@ -138,9 +143,9 @@ else              " Windowsのとき
   set nobackup
 endif
 
-"===========================================================
-" search
-"===========================================================
+"======================================================================
+"  Search
+"======================================================================
 
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase
@@ -158,8 +163,11 @@ set incsearch
 " ハイライト検索
 set hlsearch
 
+" 検索時のハイライトを解除
+nnoremap <silent><C-l> :nohlsearch<CR>
+
 "=====================================================================
-" Command-line Window
+"  Command-line Window
 "=====================================================================
 
 " Command-line windowの行数
@@ -189,35 +197,35 @@ function! s:init_cmdwin()
   startinsert!
 endfunction
 
-"======================================================================
-" 戦闘力を上げるために
-"======================================================================
+"=====================================================================
+"  TabWindow
+"=====================================================================
 
-" '\e[v|g]'で.(g)vimrcを編集
-nnoremap <silent><Leader>ev  :<C-u>edit $MYVIMRC<CR> :echo "Opened .vimrc"<CR>
-nnoremap <silent><Leader>eg  :<C-u>edit $MYGVIMRC<CR> :echo "Opened .gvimrc"<CR>
-
-" '\r[v|g]'で.(g)vimrcを再読み込み
-nnoremap <silent><Leader>rv :<C-u>source $MYVIMRC<CR> :echo "Finish Loading .vimrc"<CR>
-nnoremap <silent><Leader>rg :<C-u>source $MYGVIMRC<CR> :echo "Finish Loading .vimrc"<CR>
-
-"if !has('gui_running') && !s:is_windows "Windowsの場合
-"  ".vimrcの再読込時にも色が変化するようにする
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-"else
-"  ".vimrcの再読込時にも色が変化するようにする
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC
-"  autocmd MyAutoCmd BufWritePost $MYGVIMRC
-"endif
-
+" 新しいタブの作成
+nnoremap <C-t><C-e> :<C-u>tabedit<Space>
 
 "=====================================================================
-" keybind
+"  Window分割
+"=====================================================================
+
+" Tabでウィンドウの移動
+nnoremap <silent><Tab> <C-w>w
+
+" 分割したウィンドウ幅の変更
+nnoremap <C-w><C-u> <C-w>+
+nnoremap <C-w><C-d> <C-w>-
+
+"=====================================================================
+"  KeyBind
 "=====================================================================
 
 " jjでノーマルモードへ
 inoremap jj <Esc>
 vnoremap <C-j><C-j> <Esc>
+
+" 一行スクロールをエイリアス
+nnoremap <C-j> <C-e>
+nnoremap <C-k> <C-y>
 
 " カーソルキーからABCDが出現する謎現象を解消
 inoremap OA <Up>
@@ -239,17 +247,8 @@ inoremap <C-f><C-l> <Right>
 " inoremap <C-u> <BS>
 inoremap <C-d> <Del>
 
-" 行の先頭へ移動
-inoremap <C-a> <HOME>
-
-" 行の後ろへ移動
-inoremap <C-e> <END>
-
 " 現在の行の下に空行
 inoremap <C-o> <ESC>o
-
-" Tabでウィンドウの移動
-nnoremap <silent><Tab> <C-w>w
 
 " カッコなどを入力したら自動的に中へ
 inoremap {} {}<Left>
@@ -260,11 +259,8 @@ inoremap <> <><Left>
 inoremap {% {%<Space><Space>%}<Left><Left><Left>
 inoremap [] []<Left>
 
-" 検索時のハイライトを解除
-nnoremap <silent><C-l> :nohlsearch<CR>
-
 "=====================================================================
-" 視覚化、表示など
+"  視覚化、表示など
 "=====================================================================
 
 " 全角スペースを視覚化
@@ -299,10 +295,10 @@ endif
 highlight StatusLine ctermfg=black ctermbg=cyan
 
 
-"=================================================
-" インサートモード時に、ステータスラインの色を変更
-" Windowsのときのみ
-"=================================================
+"======================================================================
+"  インサートモード時に、ステータスラインの色を変更
+"  Windowsのときのみ
+"======================================================================
 let g:hi_insert = 'highlight StatusLine ctermfg=red ctermbg=yellow cterm=NONE guifg=red guibg=yellow'
 
 if has('syntax')
@@ -334,9 +330,30 @@ function! s:GetHighlight(hi)
   return hl
 endfunction
 
+"======================================================================
+"  戦闘力を上げるために
+"======================================================================
+
+" '\e[v|g]'で.(g)vimrcを編集
+nnoremap <silent><Leader>ev  :<C-u>edit $MYVIMRC<CR> :echo "Opened .vimrc"<CR>
+nnoremap <silent><Leader>eg  :<C-u>edit $MYGVIMRC<CR> :echo "Opened .gvimrc"<CR>
+
+" '\r[v|g]'で.(g)vimrcを再読み込み
+nnoremap <silent><Leader>rv :<C-u>source $MYVIMRC<CR> :echo "Finish Loading .vimrc"<CR>
+nnoremap <silent><Leader>rg :<C-u>source $MYGVIMRC<CR> :echo "Finish Loading .vimrc"<CR>
+
+"if !has('gui_running') && !s:is_windows "Windowsの場合
+"  ".vimrcの再読込時にも色が変化するようにする
+"  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+"else
+"  ".vimrcの再読込時にも色が変化するようにする
+"  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC
+"  autocmd MyAutoCmd BufWritePost $MYGVIMRC
+"endif
+
 
 "=====================================================================
-" color
+"  color
 "=====================================================================
 
 source ~/.vim/myconf/color.vim

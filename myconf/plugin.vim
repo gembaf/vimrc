@@ -39,6 +39,7 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'Shougo/neobundle.vim.git'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimproc.git', {
