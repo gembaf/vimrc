@@ -95,6 +95,10 @@ command! Today call Today()
 " 折りたたみ
 set foldmethod=marker
 
+" 行番号を相対的に
+set relativenumber
+nnoremap <F4> :<C-u>set relativenumber!<CR>
+
 " }}}
 
 " <<<<<<<<<< Indent, Tab >>>>>>>>>> {{{
