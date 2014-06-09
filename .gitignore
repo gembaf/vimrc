@@ -1,12 +1,8 @@
 # _tmp/ 以下のファイルを除外
-# ただしtmp/ 自体は残す
-_tmp/*
-!_tmp/readme.txt
-
 # bundle/ 以下のファイルを除外
-# ただしbundle/ 自体は残す
+_tmp/*
 bundle/*
-!bundle/readme.txt
+!.keep
 
 # よくわからんファイルを無視
 /.netrwhist
