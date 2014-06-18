@@ -86,12 +86,6 @@ set autowrite
 " <C-p>でpaste-modeとの切り替え
 nnoremap <silent><C-p> :set paste!<CR>
 
-" 今日の日付を挿入
-function! Today()
-  execute ":normal o" . strftime("%Y.%m.%d(%a)")
-endfunction
-command! Today call Today()
-
 " 折りたたみ
 set foldmethod=marker
 
