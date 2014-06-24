@@ -1,0 +1,81 @@
+
+#===========================================================
+# 試し割り
+#===========================================================
+
+snippet     is_prime1
+abbr        prime?
+  int is_prime(int n)
+  {
+    int k;
+
+    if ( n < 2 ) { return 0; }
+    else if ( n == 2 ) { return 1; }
+
+    if ( n%2 == 0 ) { return 0; }
+
+    for ( k = 3; k <= n/k; k += 2 ) {
+      if ( n%k == 0 ) { return 0; }
+    }
+
+    return 1;
+  }
+
+#===========================================================
+# エラトステネスの篩
+#===========================================================
+
+snippet     is_prime2
+alias       eratosthenes
+abbr        eratosthenes
+  int count_prime(int max)
+  {
+    int i, j, k;
+    int count = 1;
+    int *prime;
+
+    max = (max - 3) / 2;
+    prime = (int*)malloc(sizeof(int)*max);
+    if ( prime == NULL ) { puts("error"); return -1; }
+
+    for ( k = 0; k < max; k++ ) { prime[k] = 1; }
+    for ( i = 0; i < max; i++ ) {
+      int prime_num = i+i+3;
+      if ( prime[i] == 0 ) { continue; }
+      count++;
+      for ( j = i+prime_num; j < max; j += prime_num ) { prime[j] = 0; }
+    }
+
+    free(prime);
+    return count;
+  }
+
+#===========================================================
+# 最大公約数
+#===========================================================
+
+snippet     gcd
+abbr        gcd
+  int gcd(int a, int b)
+  {
+    int t;
+    while ( b != 0 ) {
+      t = a%b; a = b; b = t;
+    }
+    return a;
+  }
+
+#===========================================================
+# 最小公倍数
+#===========================================================
+
+snippet     lcm
+abbr        lcm
+  int lcm(int a, int b)
+  {
+    if ( a*b == 0 ) { return 0; }
+    return a*b / gcd(a, b);
+  }
+
+
+
