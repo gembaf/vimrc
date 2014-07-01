@@ -39,16 +39,16 @@ abbr        eratosthenes
     if ( prime == NULL ) { puts("error"); return -1; }
 
     for ( k = 0; k < max; k++ ) { prime[k] = 1; }
-    for ( i = 0; i < max; i++ ) {
-      int prime_num = i+i+3;
+    for ( i = 2; i < max; i++ ) {
       if ( prime[i] == 0 ) { continue; }
       count++;
-      for ( j = i+prime_num; j < max; j += prime_num ) { prime[j] = 0; }
+      for ( j = i+i; j < max; j += i ) { prime[j] = 0; }
     }
 
     free(prime);
     return count;
   }
+
 
 #===========================================================
 # 最大公約数
