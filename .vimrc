@@ -256,6 +256,11 @@ inoremap <> <><Left>
 inoremap {% {%<Space><Space>%}<Left><Left><Left>
 inoremap [] []<Left>
 
+" zはよく使うのでSpaceで
+nnoremap <Space> z
+vnoremap <Space> z
+nnoremap <Space><Space> zz
+
 " }}}
 
 " <<<<<<<<<< 視覚化、表示など >>>>>>>>>> {{{
