@@ -88,6 +88,7 @@ nnoremap <silent><C-p> :set paste!<CR>
 
 " 折りたたみ
 set foldmethod=marker
+set foldlevel=1
 
 " 行番号を相対的に
 set relativenumber
