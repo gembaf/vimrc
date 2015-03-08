@@ -31,6 +31,7 @@ endif
 NeoBundle 'kchmck/vim-coffee-script.git'
 NeoBundle 'slim-template/vim-slim.git'
 NeoBundle 'groenewege/vim-less'
+NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'thinca/vim-scouter.git'
