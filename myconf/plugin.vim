@@ -17,6 +17,8 @@ filetype indent plugin off
 "SSL認証のエラーを無視して回避
 "let $GIT_SSL_NO_VERIFY="true"
 
+let g:neobundle_default_git_protocol='git'
+
 "NeoBundleを初期化して、NeoBundle自身もNeoBundleで管理
 if has('vim_starting')
   if &runtimepath !~ '/neobundle.vim'
@@ -28,18 +30,14 @@ endif
 
 NeoBundle 'kchmck/vim-coffee-script.git'
 NeoBundle 'slim-template/vim-slim.git'
-NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle 'osyo-manga/shabadou.vim'
-NeoBundle 'jceb/vim-hier'
+NeoBundle 'groenewege/vim-less'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'thinca/vim-scouter.git'
 NeoBundle 'mattn/emmet-vim.git'
 NeoBundle 'vim-jp/vimdoc-ja.git'
-NeoBundle 'groenewege/vim-less'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'Shougo/neobundle.vim.git'
-NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -106,39 +104,6 @@ let g:quickrun_config = {
       \   "runner/vimproc/updatetime" : 40,
       \   },
       \ }
-
-"===========================================================
-" vim-watchdogs
-"===========================================================
-
-"g:quickrun_configの設定を渡す
-"g:quickrun_configの後に書く
-call watchdogs#setup(g:quickrun_config)
-
-"保存したときにシンタックスチェック
-let g:watchdogs_check_BufWritePost_enable = 0
-
-"filetypeごとに有効無効を設定
-let g:watchdogs_check_BufWritePost_enables = {
-      \ "c" : 0
-      \ }
-
-"一定時間キー入力がなかったときにシンタックスチェック
-let g:watchdogs_check_CursorHold_enable = 0
-
-"===========================================================
-" Vim-hier
-"===========================================================
-
-"ハイライトの設定
-execute "highlight ucurl_my cterm=undercurl ctermfg=Red"
-let g:hier_highlight_group_qf = "ucurl_my"
-
-"ハイライト箇所を更新
-nnoremap <Space>hiu :HierUpdate<CR>
-
-"ハイライトを削除
-nnoremap <Space>hic :HierClear<CR>
 
 "===========================================================
 " ZenCoding-vim
