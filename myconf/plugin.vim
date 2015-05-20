@@ -25,7 +25,9 @@ if has('vim_starting')
     "自身のNeoBundleを置いている場所
     execute 'set runtimepath+=' . expand('~/.vim/bundle/neobundle.vim')
   endif
-  call neobundle#rc(expand('~/.vim/bundle'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  call neobundle#end()
 endif
 
 NeoBundle 'kchmck/vim-coffee-script.git'
