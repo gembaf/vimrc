@@ -27,33 +27,31 @@ if has('vim_starting')
   endif
   call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundleFetch 'Shougo/neobundle.vim'
+  NeoBundle 'mtscout6/vim-cjsx.git'
+  NeoBundle 'mxw/vim-jsx.git'
+  NeoBundle 'kchmck/vim-coffee-script.git'
+  NeoBundle 'slim-template/vim-slim.git'
+  NeoBundle 'groenewege/vim-less'
+  NeoBundle 'digitaltoad/vim-jade'
+  NeoBundle 'Lokaltog/vim-powerline'
+  NeoBundle 'thinca/vim-quickrun.git'
+  NeoBundle 'thinca/vim-scouter.git'
+  NeoBundle 'mattn/emmet-vim.git'
+  NeoBundle 'vim-jp/vimdoc-ja.git'
+  NeoBundle 'tpope/vim-rails'
+  NeoBundle 'Shougo/neocomplcache'
+  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'Shougo/vimproc.git', {
+        \ 'build' : {
+        \   'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+        \   'cygwin' : 'make -f make_cygwin.mak',
+        \   'mac' : 'make -f make_mac.mak',
+        \   'unix' : 'make -f make_unix.mak',
+        \   },
+        \ }
   call neobundle#end()
 endif
-
-NeoBundle 'mtscout6/vim-cjsx.git'
-NeoBundle 'mxw/vim-jsx.git'
-NeoBundle 'kchmck/vim-coffee-script.git'
-NeoBundle 'slim-template/vim-slim.git'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'thinca/vim-quickrun.git'
-NeoBundle 'thinca/vim-scouter.git'
-NeoBundle 'mattn/emmet-vim.git'
-NeoBundle 'vim-jp/vimdoc-ja.git'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'Shougo/neobundle.vim.git'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/vimproc.git', {
-      \ 'build' : {
-      \   'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-      \   'cygwin' : 'make -f make_cygwin.mak',
-      \   'mac' : 'make -f make_mac.mak',
-      \   'unix' : 'make -f make_unix.mak',
-      \   },
-      \ }
 
 "最初にOFFにしたいろいろをON
 filetype indent plugin on
