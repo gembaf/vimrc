@@ -28,6 +28,8 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
+NeoBundle 'mtscout6/vim-cjsx.git'
+NeoBundle 'mxw/vim-jsx.git'
 NeoBundle 'kchmck/vim-coffee-script.git'
 NeoBundle 'slim-template/vim-slim.git'
 NeoBundle 'groenewege/vim-less'
