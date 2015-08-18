@@ -33,6 +33,7 @@ if has('vim_starting')
   NeoBundle 'slim-template/vim-slim.git'
   NeoBundle 'groenewege/vim-less'
   NeoBundle 'digitaltoad/vim-jade'
+  NeoBundle 'chase/vim-ansible-yaml'
   NeoBundle 'Lokaltog/vim-powerline'
   NeoBundle 'thinca/vim-quickrun.git'
   NeoBundle 'thinca/vim-scouter.git'
