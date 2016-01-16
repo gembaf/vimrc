@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-# 設定の適用
-echo 'source ~/.vim/.vimrc' > ~/.vimrc
+git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/.bundle/neobundle.vim
+vim +":NeoBundleInstall" +":q"
+cp -i <(echo 'source ~/.vim/.vimrc') ~/.vimrc
 

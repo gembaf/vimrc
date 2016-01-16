@@ -1,11 +1,7 @@
-# _tmp/ 以下のファイルを除外
-# bundle/ 以下のファイルを除外
-_tmp/*
-bundle/*
+/.backup/*
+/.bundle/*
 !.keep
 
 # よくわからんファイルを無視
 /.netrwhist
-
-
 
