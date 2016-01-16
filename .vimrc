@@ -179,8 +179,8 @@ xmap ::  <sid>(command-line-enter)
 
 autocmd MyAutoCmd CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
-  "Command-line windowで補完を開始する長さ
-  "NeoComplCacheAutoCompletionLength 2
+  " Command-line windowで補完を開始する長さ
+  " NeoComplCacheAutoCompletionLength 2
 
   nnoremap <buffer> q :<C-u>quit<CR>
   nnoremap <buffer> <TAB> :<C-u>quit<CR>
@@ -188,7 +188,7 @@ function! s:init_cmdwin()
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
   inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 
-  "Completion.
+  " Completion.
   inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
   startinsert!
