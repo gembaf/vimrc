@@ -2,9 +2,17 @@
 " 初期設定
 "===========================================================
 
-" 絶対最初に書く!!!
+" tinyとsmallではvimrcを読み込まない
+if !1 | finish | end
+
+" Vimrc augroup
 autocmd!
-" 絶対最初に書く!!!
+augroup MyVimrc
+  autocmd!
+augroup END
+
+command! -nargs=* Autocmd autocmd MyVimrc <args>
+command! -nargs=* AutocmdFT autocmd MyVimrc FileType <args>
 
 let mapleader='\'
 
@@ -39,20 +47,17 @@ source ~/.vim/myconf/plugin.vim
 " 基本設定
 "===========================================================
 
-" autocmd!をMyAutoCmdに追加
-augroup MyAutoCmd
-  autocmd!
-augroup END
-
 " 256色使えるように
 set t_Co=256
 
-" 行番号をつける
+" 行番号
 set number
 
+" 行番号の相対表記
+set relativenumber
+nnoremap <F4> :<C-u>set relativenumber!<CR>
+
 " viとの互換性をOFF
-" OFFにするとなぜかwhichwrapが効かなくなる
-" whichwrapより前に書くと解決
 set nocompatible
 
 " カーソルを行頭、行末で止まらないようにする
@@ -81,19 +86,30 @@ else
   set fileencoding=sjis
 endif
 
-" :next :previous などのコマンドを実行する度に保存
-set autowrite
+" 全角スペースの視覚化
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+au BufNewFile,BufRead * match ZenkakuSpace /　/
 
-" <C-p>でpaste-modeとの切り替え
-nnoremap <silent><C-p> :set paste!<CR>
+" 閉じ括弧が入力されたとき、対応する括弧を表示する
+set showmatch
 
-" 折りたたみ
-set foldmethod=marker
-set foldlevel=1
+" タブ文字、行末など不可視文字を表示する
+set list
 
-" 行番号を相対的に
-set relativenumber
-nnoremap <F4> :<C-u>set relativenumber!<CR>
+" listで表示される文字のフォーマットを指定する
+set listchars=eol:$,tab:>-,trail:_
+
+" ステータスライン
+set laststatus=2
+set cmdheight=2
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+highlight StatusLine ctermfg=black ctermbg=cyan
+
+" ノーマルモード後にすぐ反映されない対策
+if has('unix') && !has('gui_running')
+  inoremap <silent> <ESC> <ESC>
+  vnoremap <silent> <ESC> <ESC>
+endif
 
 "===========================================================
 " indent, tab
@@ -174,23 +190,18 @@ nnoremap <sid>(command-line-enter) q:
 xnoremap <sid>(command-line-enter) q:
 nnoremap <sid>(command-line-norange) q:<C-u>
 
+" ::でCommand-line windowへ
 nmap ::  <sid>(command-line-enter)
 xmap ::  <sid>(command-line-enter)
 
-autocmd MyAutoCmd CmdwinEnter * call s:init_cmdwin()
+autocmd MyVimrc CmdwinEnter * call s:init_cmdwin()
 function! s:init_cmdwin()
-  " Command-line windowで補完を開始する長さ
-  " NeoComplCacheAutoCompletionLength 2
-
   nnoremap <buffer> q :<C-u>quit<CR>
   nnoremap <buffer> <TAB> :<C-u>quit<CR>
   inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
   inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
   inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-
-  " Completion.
   inoremap <buffer><expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
   startinsert!
 endfunction
 
@@ -230,15 +241,11 @@ vnoremap OB <Down>
 vnoremap OC <Right>
 vnoremap OD <Left>
 
-" 1文字のみの移動はこれで
+" 1文字のみの移動
 inoremap <C-f><C-h> <Left>
 inoremap <C-f><C-j> <Down>
 inoremap <C-f><C-k> <Up>
 inoremap <C-f><C-l> <Right>
-
-" バックスペースとデリートキーをエイリアス
-" inoremap <C-u> <BS>
-inoremap <C-d> <Del>
 
 " 現在の行の下に空行
 inoremap <C-o> <ESC>o
@@ -252,47 +259,8 @@ inoremap <> <><Left>
 inoremap {% {%<Space><Space>%}<Left><Left><Left>
 inoremap [] []<Left>
 
-" zはよく使うのでSpaceで
-nnoremap <Space> z
-vnoremap <Space> z
-nnoremap <Space><Space> zz
-
-" }}}
-
-"===========================================================
-" 視覚化
-"===========================================================
-
-" 全角スペースを視覚化
-highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
-au BufNewFile,BufRead * match ZenkakuSpace /　/
-
-" 閉じ括弧が入力されたとき、対応する括弧を表示する
-set showmatch
-
-" タブ文字、行末など不可視文字を表示する
-set list
-
-" listで表示される文字のフォーマットを指定する
-set listchars=eol:$,tab:>-,trail:_
-
-" ステータスラインを常に表示
-set laststatus=2
-
-" ステータスラインを2行
-set cmdheight=2
-
-" ステータスラインに色々表示
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-
-" ノーマルモード後にすぐ反映されない対策
-if has('unix') && !has('gui_running')
-  inoremap <silent> <ESC> <ESC>
-  vnoremap <silent> <ESC> <ESC>
-endif
-
-" ステータスラインの色を変更(ノーマルモード時)
-highlight StatusLine ctermfg=black ctermbg=cyan
+" <C-p>でpaste-modeとの切り替え
+nnoremap <silent><C-p> :set paste!<CR>
 
 "===========================================================
 " Statusline
@@ -332,29 +300,40 @@ function! s:GetHighlight(hi)
 endfunction
 
 "===========================================================
-" 戦闘力を上げるために
-"===========================================================
-
-" '\e[v|g]'で.(g)vimrcを編集
-nnoremap <silent><Leader>ev  :<C-u>edit $MYVIMRC<CR> :echo "Opened .vimrc"<CR>
-nnoremap <silent><Leader>eg  :<C-u>edit $MYGVIMRC<CR> :echo "Opened .gvimrc"<CR>
-
-" '\r[v|g]'で.(g)vimrcを再読み込み
-nnoremap <silent><Leader>rv :<C-u>source $MYVIMRC<CR> :echo "Finish Loading .vimrc"<CR>
-nnoremap <silent><Leader>rg :<C-u>source $MYGVIMRC<CR> :echo "Finish Loading .vimrc"<CR>
-
-"if !has('gui_running') && !s:is_windows "Windowsの場合
-"  ".vimrcの再読込時にも色が変化するようにする
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-"else
-"  ".vimrcの再読込時にも色が変化するようにする
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC
-"  autocmd MyAutoCmd BufWritePost $MYGVIMRC
-"endif
-
-"===========================================================
 " Color
 "===========================================================
 
-source ~/.vim/myconf/color.vim
+" 背景色の設定
+set background=dark
+
+" コメント
+hi Comment ctermfg=green ctermbg=NONE guifg=green guibg=NONE
+
+" 文字列
+hi String ctermfg=grey ctermbg=NONE guifg=grey guibg=NONE
+
+" 数字
+hi Number ctermfg=lightred ctermbg=NONE guifg=lightred guibg=NONE
+
+" 行番号
+hi LineNr ctermfg=blue ctermbg=NONE guifg=blue guibg=NONE
+
+" true, falseなど
+hi Constant ctermfg=magenta ctermbg=NONE guifg=magenta guibg=NONE
+
+" ブール型
+hi Boolean ctermfg=magenta ctermbg=NONE guifg=magenta guibg=NONE
+
+" テキスト以外 (eol, extends, precedes)
+hi NonText ctermfg=lightblue ctermbg=NONE guifg=lightblue guibg=NONE
+
+" スペシャルキー (nbsp, tab, trail)
+hi SpecialKey ctermfg=darkblue ctermbg=NONE guifg=blue guibg=NONE
+
+" 補完時のメニュー
+hi Pmenu ctermfg=white ctermbg=darkblue guifg=white guibg=blue
+hi PmenuSel ctermfg=white ctermbg=darkred guifg=white guibg=red
+
+" マクロなど
+hi PreProc ctermfg=cyan ctermbg=NONE guifg=cyan guibg=NONE
 

@@ -2,29 +2,19 @@
 " plugin
 "=====================================================================
 
-"===========================================================
-" NeoBundle
-" ----------------------------------------------------------
-"  pluginを管理するplugin
-"  新しいpluginを入れたい場合は、
-"  NeoBundle 'hoge/huga' と書き込み、:NeoBundleInstall
-"===========================================================
-
 " 最初にいろいろOFF
 filetype off
 filetype indent plugin off
 
-" SSL認証のエラーを無視して回避
-" let $GIT_SSL_NO_VERIFY="true"
-
+" https経由でgit clone
 let g:neobundle_default_git_protocol='https'
 
 " NeoBundleを初期化して、NeoBundle自身もNeoBundleで管理
 if has('vim_starting')
   if &runtimepath !~ '/neobundle.vim'
-    " 自身のNeoBundleを置いている場所
     execute 'set runtimepath+=' . expand('~/.vim/.bundle/neobundle.vim')
   endif
+
   call neobundle#begin(expand('~/.vim/.bundle/'))
   NeoBundleFetch 'Shougo/neobundle.vim'
   NeoBundle 'mtscout6/vim-cjsx.git'
@@ -58,15 +48,6 @@ endif
 filetype indent plugin on
 
 "===========================================================
-" lightline
-"===========================================================
-
-" let g:lightline = {
-"       \ 'colorscheme': 'solarized'
-"       \ }
-
-
-"===========================================================
 " Vim-quickrun
 "===========================================================
 
@@ -77,16 +58,6 @@ let g:quickrun_config = {
       \   "runner/vimproc/updatetime" : 40,
       \   },
       \ }
-
-"===========================================================
-" ZenCoding-vim
-"===========================================================
-
-" indentをtabからspaceへ
-let g:user_zen_setting = {
-      \ 'indentation' : '  '
-      \ }
-
 
 "===========================================================
 " Neosnippet
@@ -178,13 +149,9 @@ let g:neocomplcache_dictionary_filetype_lists = {
             \ 'java' : '~/.vim/dict/java.dict'
             \ }
 
-
 "=================================================
 " keymap
 "=================================================
-
-" <Leader>esでスニペットファイルを編集
-nnoremap <Space>es :<C-u>NeoComplCacheEditSnippets<CR>
 
 " スニペット補完用マッピング
 " imap <C-k> <Plug>(neocomplcache_snippets_expand)
@@ -207,18 +174,4 @@ inoremap <expr><C-g> neocomplcache#undo_completion()
 
 " 補完候補の中から共通する部分を補完
 inoremap <expr><C-l> neocomplcache#complete_common_string()
-
-" TABで補完候補の選択
-" inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-" inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-" imap <expr><TAB> neosnippet#expandable() ?
-"       \ "\<Plug>(neosnippet_expand_or_jump)"
-"       \: pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable() ?
-"       \ "\<Plug>(neosnippet_expand_or_jump)"
-"       \: "\<TAB>"
-
-" uniteと連携させる場合
-" imap <C-k> <Plug>(neocomplcache_start_unite_complete)
-" smap <C-k> <Plug>(neocomplcache_start_unite_complete)
 
