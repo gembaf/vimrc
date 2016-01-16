@@ -17,7 +17,7 @@ filetype indent plugin off
 "SSL認証のエラーを無視して回避
 "let $GIT_SSL_NO_VERIFY="true"
 
-let g:neobundle_default_git_protocol='git'
+let g:neobundle_default_git_protocol='https'
 
 "NeoBundleを初期化して、NeoBundle自身もNeoBundleで管理
 if has('vim_starting')
