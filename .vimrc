@@ -129,9 +129,9 @@ if !s:is_windows  " Linuxのとき
   " バックアップファイルを作る
   set backup
   " スワップファイルの出力先を指定
-  set directory=~/.vim/_tmp
+  set directory=~/.vim/.backup
   " バックアップファイルの出力先を指定
-  set backupdir=~/.vim/_tmp
+  set backupdir=~/.vim/.backup
 else              " Windowsのとき
   " スワップファイルをつくらない
   set noswapfile
