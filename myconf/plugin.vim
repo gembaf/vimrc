@@ -17,19 +17,13 @@ if has('vim_starting')
 
   call neobundle#begin(expand('~/.vim/.bundle/'))
   NeoBundleFetch 'Shougo/neobundle.vim'
-  NeoBundle 'mtscout6/vim-cjsx.git'
-  NeoBundle 'mxw/vim-jsx.git'
-  NeoBundle 'kchmck/vim-coffee-script.git'
-  NeoBundle 'slim-template/vim-slim.git'
-  NeoBundle 'groenewege/vim-less'
-  NeoBundle 'digitaltoad/vim-jade'
-  NeoBundle 'chase/vim-ansible-yaml'
+
+  " base
+  NeoBundle 'vim-jp/vimdoc-ja.git'
   NeoBundle 'itchyny/lightline.vim'
   NeoBundle 'thinca/vim-quickrun.git'
-  NeoBundle 'thinca/vim-scouter.git'
-  NeoBundle 'mattn/emmet-vim.git'
-  NeoBundle 'vim-jp/vimdoc-ja.git'
-  NeoBundle 'tpope/vim-rails'
+
+  " neo
   NeoBundle 'Shougo/neocomplcache'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
@@ -41,6 +35,17 @@ if has('vim_starting')
         \   'unix' : 'make -f make_unix.mak',
         \   },
         \ }
+
+  " syntax
+  NeoBundle 'mtscout6/vim-cjsx.git'
+  NeoBundle 'mxw/vim-jsx.git'
+  NeoBundle 'kchmck/vim-coffee-script.git'
+  NeoBundle 'digitaltoad/vim-jade'
+  NeoBundle 'slim-template/vim-slim.git'
+  NeoBundle 'groenewege/vim-less'
+  NeoBundle 'chase/vim-ansible-yaml'
+  NeoBundle 'tpope/vim-rails'
+
   call neobundle#end()
 endif
 
@@ -62,6 +67,7 @@ let g:quickrun_config = {
 "===========================================================
 " Neosnippet
 "===========================================================
+
 "=================================================
 " 機能のON/OFFや設定
 "=================================================
