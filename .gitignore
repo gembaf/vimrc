@@ -1,5 +1,5 @@
 /.backup/*
-bundle/*
+/.bundle/*
 !.keep
 
 # よくわからんファイルを無視

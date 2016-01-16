@@ -23,9 +23,9 @@ let g:neobundle_default_git_protocol='https'
 if has('vim_starting')
   if &runtimepath !~ '/neobundle.vim'
     "自身のNeoBundleを置いている場所
-    execute 'set runtimepath+=' . expand('~/.vim/bundle/neobundle.vim')
+    execute 'set runtimepath+=' . expand('~/.vim/.bundle/neobundle.vim')
   endif
-  call neobundle#begin(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/.bundle/'))
   NeoBundleFetch 'Shougo/neobundle.vim'
   NeoBundle 'mtscout6/vim-cjsx.git'
   NeoBundle 'mxw/vim-jsx.git'
