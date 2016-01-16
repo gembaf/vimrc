@@ -34,7 +34,7 @@ if has('vim_starting')
   NeoBundle 'groenewege/vim-less'
   NeoBundle 'digitaltoad/vim-jade'
   NeoBundle 'chase/vim-ansible-yaml'
-  NeoBundle 'Lokaltog/vim-powerline'
+  NeoBundle 'itchyny/lightline.vim'
   NeoBundle 'thinca/vim-quickrun.git'
   NeoBundle 'thinca/vim-scouter.git'
   NeoBundle 'mattn/emmet-vim.git'
@@ -58,44 +58,13 @@ endif
 filetype indent plugin on
 
 "===========================================================
-" Vim-powerline
+" lightline
 "===========================================================
 
-"fontの指定
-set guifont=Ricty_for_Powerline
+" let g:lightline = {
+"       \ 'colorscheme': 'solarized'
+"       \ }
 
-"スペシャルシンボル
-"let g:Powerline_symbols = 'compatible'
-"let g:Powerline_symbols = 'unicode'
-let g:Powerline_symbols = 'fancy'
-
-"シンボルを上書きする
-let g:Powerline_symbols_override = {
-\ 'BRANCH': [0x2213],
-\ }
-
-"モード名を上書きする
-let g:Powerline_mode_n = 'Normal'
-let g:Powerline_mode_i = 'Insert'
-let g:Powerline_mode_R = 'Replace'
-let g:Powerline_mode_v = 'Visual'
-let g:Powerline_mode_V = 'V-Line'
-let g:Powerline_mode_cv = 'V-Block'
-let g:Powerline_mode_s = 'Select'
-let g:Powerline_mode_S = 'S-Line'
-let g:Powerline_mode_cs = 'S-Block'
-
-"ファイルへの相対パスを表示する
-let g:Powerline_stl_path_style = 'relative'
-
-"ノーマルモード後にすぐ反映されない対策
-if has('unix') && !has('gui_running')
-  inoremap <silent> <ESC> <ESC>
-  vnoremap <silent> <ESC> <ESC>
-endif
-
-"~/.vim/bundle/vim-powerline/autoload/Powerline/Colorschemes/color_powerline.vimを読み取る
-let g:Powerline_colorscheme='color_powerline'
 
 "===========================================================
 " Vim-quickrun
