@@ -15,6 +15,9 @@ augroup END
 " 行番号
 set number
 
+" 文字コード
+set encoding=utf-8
+
 " タブ文字、行末など
 set listchars=eol:$,tab:>-,trail:_
 set list
@@ -46,12 +49,65 @@ command! -nargs=1 Setw call SetTabWidth(<args>)
 set smartindent
 set smarttab
 
+" カッコなどを入力したら自動的に中へ
+inoremap {} {}<Left>
+inoremap () ()<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap <> <><Left>
+inoremap {% {%<Space><Space>%}<Left><Left><Left>
+inoremap [] []<Left>
+
+" 現在の行の下に空行
+inoremap <C-o> <ESC>o
+
 "================================================================================
 " 移動
 "================================================================================
 
 " カーソルが行頭、行末で止まらないように
 set whichwrap=b,s,h,l,<,>,[,]
+
+" 前回終了したカーソル行に移動
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+" 表示行単位で移動
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" 1文字のみの移動
+inoremap <C-f><C-h> <Left>
+inoremap <C-f><C-j> <Down>
+inoremap <C-f><C-k> <Up>
+inoremap <C-f><C-l> <Right>
+
+" 一行スクロール
+nnoremap <C-j> <C-e>
+nnoremap <C-k> <C-y>
+
+"================================================================================
+" 検索
+"================================================================================
+
+" 文字列が小文字の場合は大文字小文字を区別なく検索する
+set ignorecase
+
+" 文字列に大文字が含まれている場合は区別して検索する
+set smartcase
+
+" ファイルの先頭へループしない
+set nowrapscan
+
+" インクリメンタルサーチを有効にする
+set incsearch
+
+" ハイライトをつける
+set hlsearch
+
+" ハイライト解除
+nnoremap <silent><C-l> :nohlsearch<CR>
 
 "================================================================================
 " バックアップ
@@ -137,9 +193,8 @@ endfunction
 inoremap jj <Esc>
 vnoremap <C-j><C-j> <Esc>
 
-" 一行スクロール
-nnoremap <C-j> <C-e>
-nnoremap <C-k> <C-y>
+" <C-p>でpaste-modeとの切り替え
+nnoremap <silent><C-p> :set paste!<CR>
 
 " カーソルキーからABCDが出現する謎現象を解消
 inoremap OA <Up>
@@ -150,31 +205,4 @@ vnoremap OA <Up>
 vnoremap OB <Down>
 vnoremap OC <Right>
 vnoremap OD <Left>
-
-" 1文字のみの移動
-inoremap <C-f><C-h> <Left>
-inoremap <C-f><C-j> <Down>
-inoremap <C-f><C-k> <Up>
-inoremap <C-f><C-l> <Right>
-
-" 現在の行の下に空行
-inoremap <C-o> <ESC>o
-
-" カッコなどを入力したら自動的に中へ
-inoremap {} {}<Left>
-inoremap () ()<Left>
-inoremap "" ""<Left>
-inoremap '' ''<Left>
-inoremap <> <><Left>
-inoremap {% {%<Space><Space>%}<Left><Left><Left>
-inoremap [] []<Left>
-
-" <C-p>でpaste-modeとの切り替え
-nnoremap <silent><C-p> :set paste!<CR>
-
-" 表示行単位で移動
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
 
