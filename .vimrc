@@ -28,11 +28,69 @@ set background=dark
 source ~/.vim/rc/highlight.vim
 
 "================================================================================
+" 入力
+"================================================================================
+
+" タブの代わりに空白文字を挿入
+set expandtab
+
+" タブ幅の設定
+function! SetTabWidth(width)
+  let &shiftwidth  = a:width
+  let &tabstop     = a:width
+  let &softtabstop = a:width
+endfunction
+call SetTabWidth(2)
+command! -nargs=1 Setw call SetTabWidth(<args>)
+
+set smartindent
+set smarttab
+
+"================================================================================
 " 移動
 "================================================================================
 
 " カーソルが行頭、行末で止まらないように
 set whichwrap=b,s,h,l,<,>,[,]
+
+"================================================================================
+" ステータスライン
+"================================================================================
+
+set laststatus=2
+set cmdheight=2
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+
+let g:hi_insert = 'highlight StatusLine ctermfg=red ctermbg=yellow cterm=NONE guifg=red guibg=yellow'
+
+if has('syntax')
+  augroup InsertHook
+    autocmd!
+    autocmd InsertEnter * call s:StatusLine('Enter')
+    autocmd InsertLeave * call s:StatusLine('Leave')
+  augroup END
+endif
+
+let s:slhlcmd = ''
+
+function! s:StatusLine(mode)
+    if a:mode == 'Enter'
+      silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+      silent exec g:hi_insert
+    else
+      highlight clear StatusLine
+      silent exec s:slhlcmd
+    endif
+endfunction
+
+function! s:GetHighlight(hi)
+  redir => hl
+  exec 'highlight '.a:hi
+  redir END
+  let hl = substitute(hl, '[\r\n]', '', 'g')
+  let hl = substitute(hl, 'xxx', '', '')
+  return hl
+endfunction
 
 "================================================================================
 " Command-line Window

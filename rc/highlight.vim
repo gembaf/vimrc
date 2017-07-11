@@ -37,3 +37,6 @@ hi PreProc ctermfg=cyan ctermbg=NONE guifg=cyan guibg=NONE
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
 autocmd BufNewFile,BufRead * match ZenkakuSpace /　/
 
+" ステータスライン
+highlight StatusLine ctermfg=black ctermbg=cyan
+
