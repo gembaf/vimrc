@@ -43,6 +43,7 @@ if has('vim_starting')
   NeoBundle 'digitaltoad/vim-jade'
   NeoBundle 'slim-template/vim-slim.git'
   NeoBundle 'groenewege/vim-less'
+  NeoBundle 'cakebaker/scss-syntax.vim'
   NeoBundle 'chase/vim-ansible-yaml'
   NeoBundle 'tpope/vim-rails'
 
