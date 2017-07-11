@@ -33,3 +33,7 @@ hi PmenuSel ctermfg=white ctermbg=darkred guifg=white guibg=red
 " マクロなど
 hi PreProc ctermfg=cyan ctermbg=NONE guifg=cyan guibg=NONE
 
+" 全角スペース
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+autocmd BufNewFile,BufRead * match ZenkakuSpace /　/
+
