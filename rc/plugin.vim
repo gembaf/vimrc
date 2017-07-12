@@ -2,6 +2,8 @@
 " Plugin
 "================================================================================
 
+filetype plugin indent off
+
 " deinパス設定
 let s:dein_dir = fnamemodify('~/.vim/.dein/', ':p')
 let s:dein_repo_dir = s:dein_dir . 'repos/github.com/Shougo/dein.vim'
@@ -18,6 +20,9 @@ endif
 call dein#begin(s:dein_dir)
 
 call dein#add('Shougo/neocomplcache') " required
+call dein#add('itchyny/lightline.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
 
 call dein#end()
 
@@ -26,4 +31,6 @@ if has('vim_starting') && dein#check_install()
 endif
 
 filetype plugin indent on
+
+source ~/.vim/rc/neosnippet.vim
 
