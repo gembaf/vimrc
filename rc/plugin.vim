@@ -20,7 +20,12 @@ endif
 call dein#begin(s:dein_dir)
 
 call dein#add('Shougo/neocomplcache') " required
+
+" base
 call dein#add('itchyny/lightline.vim')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+
+" snippet
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
