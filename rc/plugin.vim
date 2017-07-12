@@ -19,7 +19,8 @@ endif
 
 call dein#begin(s:dein_dir)
 
-call dein#add('Shougo/neocomplcache') " required
+" required
+call dein#add('Shougo/neocomplcache')
 
 " base
 call dein#add('itchyny/lightline.vim')
@@ -28,6 +29,23 @@ call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 " snippet
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
+
+"-- syntax
+" js
+call dein#add('mtscout6/vim-cjsx.git')
+call dein#add('mxw/vim-jsx.git')
+call dein#add('kchmck/vim-coffee-script.git')
+
+" rails
+call dein#add('tpope/vim-rails')
+
+" template
+call dein#add('slim-template/vim-slim.git')
+call dein#add('groenewege/vim-less')
+call dein#add('cakebaker/scss-syntax.vim')
+
+" other
+call dein#add('chase/vim-ansible-yaml')
 
 call dein#end()
 
