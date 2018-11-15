@@ -1,6 +1,7 @@
 /.backup/*
 /.bundle/*
-/.dein/*
 !.keep
-!.gitkeep
+
+# よくわからんファイルを無視
+/.netrwhist
 

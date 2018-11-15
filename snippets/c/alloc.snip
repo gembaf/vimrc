@@ -1,0 +1,38 @@
+
+#===========================================================
+# malloc
+#===========================================================
+snippet     malloc
+abbr        malloc
+  (${1}*)malloc(sizeof($1)*${2});
+
+#===========================================================
+# malloc
+#===========================================================
+snippet     create_arr
+abbr        create multi arr
+  Data** create_arr(int n)
+  {
+    int k;
+    Data **arr;
+    arr = (Data**)malloc(sizeof(Data*)*n);
+    if ( arr == NULL ) { puts("error"); return NULL; }
+
+    for ( k = 0; k < n; k++ ) {
+      arr[k] = (Data*)malloc(sizeof(Data)*n);
+      if ( arr[k] == NULL ) { puts("error"); return NULL; }
+    }
+
+    return arr;
+  }
+
+  void free_arr(int n, Data **arr)
+  {
+    int k;
+    for ( k = 0; k < n; k++ ) { free(arr[k]); }
+    free(arr);
+  }
+
+
+
+

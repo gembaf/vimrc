@@ -1,0 +1,83 @@
+
+#===========================================================
+# insert
+#===========================================================
+
+snippet     insert
+abbr        stable sort
+options     head
+  void insert_sort(Data arr[], int n)
+  {
+    int k1, k2;
+    Data t;
+
+    for ( k1 = 1; k1 < n; k1++ ) {
+      t = arr[k1];
+      for ( k2 = k1; k2 > 0 && arr[k2-1] > t; k2-- ) {
+        arr[k2] = arr[k2-1];
+      }
+      arr[k2] = t;
+    }
+  }
+
+
+#===========================================================
+# bubble
+#===========================================================
+
+snippet     bubble
+abbr        stable sort
+options     head
+  void bubble_sort(Data arr[], int n)
+  {
+    int k1, k2;
+    Data t;
+
+    for ( k1 = 0; k1 < n-1; k1++ ) {
+      for ( k2 = n-1; k2 > k1; k2-- ) {
+        if ( arr[k2-1] > arr[k2] ) {
+          t = arr[k2];
+          arr[k2] = arr[k2-1];
+          arr[k2-1] = t;
+        }
+      }
+    }
+  }
+
+
+#===========================================================
+# quick
+#===========================================================
+
+snippet     quick
+abbr        unstable sort
+options     head
+  void quick_sort_rec(Data arr[], int left, int right)
+  {
+    int i, j;
+    int pivot;
+    Data t;
+
+    i = left; j = right;
+    pivot = arr[(left + right) / 2];
+
+    while ( 1 ) {
+      while ( arr[i] < pivot ) { i++; }
+      while ( pivot < arr[j] ) { j--; }
+      if ( i >= j ) { break; }
+      t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+      i++; j--;
+    }
+
+    if ( left < i-1 ) { quick_sort_rec(arr, left, i-1); }
+    if ( j+1 < right ) { quick_sort_rec(arr, j+1, right); }
+  }
+
+  void quick_sort(Data arr[], int n)
+  {
+    quick_sort_rec(arr, 0, n-1);
+  }
+
+
+
+
