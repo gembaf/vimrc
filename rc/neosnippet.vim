@@ -57,6 +57,9 @@ let g:neocomplcache_temporary_dir = expand('~/.neocom')
 " neocomplcacheが使用するsnippetsのディレクトリ
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets')
 
+" スニペットが画面の上でチラチラして邪魔なので一旦無効化
+let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
+
 " オムニ補完をRuby対応にする
 let g:neocomplcache_omni_functions = {
       \ 'ruby' : 'rubycomplete#Complete',
